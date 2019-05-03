@@ -61,4 +61,89 @@
 HERE
 \end{frame}
 
+%% \begin{frame}[fragile]
+%% \frametitle{Map-reduce}
+
+%% Hadoop executes two sets of independent, identical processors:
+%% \begin{itemize}
+%% \item Mappers, which transform each input to a $\langle$key, value$\rangle$ pair.
+%% \item Reducers, each operates on all values that have a given key.
+%% \end{itemize}
+
+%% \vspace{-0.1 cm}
+%% \begin{columns}
+%% \column{0.5\linewidth}
+%% \begin{lstlisting}[frame=single]
+%% def mapper($webpage$):
+%%   for $word$ in $webpage$.split():
+%%     yield ($word$, $webpage$)
+%% $$
+%% \end{lstlisting}
+%% \column{0.58\linewidth}
+%% \begin{lstlisting}[frame=single]
+%% def reducer($word$, $webpages$):
+%%   searchIndex[$word$] = {}
+%%   for $webpage$ in $webpages$:
+%%     searchIndex[$word$].add($webpage$)
+%% \end{lstlisting}
+%% \end{columns}
+
+%% The system groups data by key in an optimized way (independent partial sorts followed by merge, minimizing network bandwidth).
+
+%% \vspace{0.2 cm}
+%% \mbox{ } \hfill \includegraphics[width=0.6\linewidth]{PLOTS/mapreduce-diagram-by-ibm.png} \hfill \mbox{ }
+%% \end{frame}
+
+%% \begin{frame}[fragile]{Nested query in C++}
+%% \vspace{0.5 cm}
+%% {\bf Example query:}
+%% \begin{center}
+%% \begin{minipage}{0.95\linewidth}
+%% \textcolor{darkblue}{``Momentum of the track with $|\eta|$ $<$ 2.4 that has the most hits.''}
+%% \end{minipage}
+%% \end{center}
+%% \small
+%% \begin{minted}{c++}
+%% Track *best = NULL;
+%% for (int i = 0;  i < tracks.size();  i++) {
+%%   if (fabs(tracks[i]->eta) < 2.4)
+%%     if (best == NULL ||
+%%         tracks[i]->hits.size() > best->hits.size())
+%%       best = tracks[i];
+%% }
+%% if (best != NULL)
+%%   return best->pt;
+%% else
+%%   return 0.0;
+%% \end{minted}
+%% \end{frame}
+
+%% \begin{frame}[fragile]{Nested query in SQL}
+%% \vspace{0.5 cm}
+%% {\bf Example query:}
+%% \begin{center}
+%% \begin{minipage}{0.95\linewidth}
+%% \textcolor{darkblue}{``Momentum of the track with $|\eta|$ $<$ 2.4 that has the most hits.''}
+%% \end{minipage}
+%% \end{center}
+%% \small
+%% \begin{minted}{sql}
+%% WITH hit_stats AS (
+%%   SELECT hit.track_id, COUNT(*) AS hit_count FROM hit
+%%     GROUP BY hit.track_id),
+%%  track_sorted AS (
+%%     SELECT track.*, 
+%%     ROW_NUMBER() OVER (
+%%      PARTITION BY track.event_id
+%%      ORDER BY hit_stats.hit_count DESC)
+%%   track_ordinal FROM track INNER JOIN hit_stats
+%%     ON hit_stats.track_id = track.id
+%%     WHERE ABS(track.eta) < 2.4)
+%%  SELECT * FROM event INNER JOIN track_sorted
+%%    ON track_sorted.event_id = event.id
+%% WHERE
+%%   track_sorted.track_ordinal = 1
+%% \end{minted}
+%% \end{frame}
+
 \end{document}
