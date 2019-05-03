@@ -32,10 +32,16 @@
 \definecolor{darkgreen}{rgb}{0,0.6,0}
 \definecolor{mauve}{rgb}{0.58,0,0.82}
 
-\title[yyyy-mm-dd-DESCRIPTION]{TITLE}
+\title[2019-05-22-colloquium-languages]{Programming languages and particle physics}
 \author{Jim Pivarski}
 \institute{Princeton University -- IRIS-HEP}
-\date{MONTH DAY, YEAR}
+\date{May 8, 2019}
+
+%% Title: Programming languages and particle physics
+
+%% Abstract:
+
+%% Programming languages aren't for computers; they're for people. If a language doesn't make it easier to express your physics problem, it's not a suitable language. Some fields have specialized "Domain Specific Languages" (DSLs) that trade freedom of expression for focus on the problem at hand, and can even improve performance by limiting this scope. A prime example is SQL, widely used by data analysts outside of physics, which trades generic computation for a SELECT-WHERE-GROUPBY pattern. Interestingly, this was the design pattern of the first electromechanical computers (Hollerith machine, 1890) and it's still a major focus of big data today (Dean & Ghemawat: MapReduce, 2004). Particle physics problems don't fit SQL well; in fact, physicists became involved in computing in tandem with the invention of generic, digital computers (Von Neumann's stored-program machine, 1945). I will present some history, some general features of programming languages, what "declarative" really means, and will show some perhaps surprising examples of DSLs you're already using.
 
 \usetikzlibrary{shapes.callouts}
 
@@ -144,6 +150,53 @@ HERE
 %% WHERE
 %%   track_sorted.track_ordinal = 1
 %% \end{minted}
+%% \end{frame}
+
+%% \begin{frame}[fragile]{}
+%% 50$\times$
+
+%% \scriptsize
+%% \begin{onlyenv}<1>
+%% \begin{minted}{python}
+%% import time
+%% import numpy
+
+%% def run_python(height, width, maxiterations=20):
+%%     y, x = numpy.ogrid[-1:0:height*1j, -1.5:0:width*1j]
+%%     c = x + y*1j
+%%     fractal = numpy.full(c.shape, maxiterations, dtype=numpy.int32)
+%%     for h in range(height):
+%%         for w in range(width):                  # for each pixel (h, w)...
+%%             z = c[h, w]
+%%             for i in range(maxiterations):      # iterate at most 20 times
+%%                 z = z**2 + c[h, w]              # applying z → z² + c
+%%                 if abs(z) > 2:                  # if it diverges (|z| > 2)
+%%                     fractal[h, w] = i           # color the plane with the iteration number
+%%                     break                       # we're done, no need to keep iterating
+%%     return fractal
+%% \end{minted}
+%% \end{onlyenv}
+%% \begin{onlyenv}<2>
+%% \begin{minted}{python}
+%% import numba
+
+%% @numba.jit
+%% def run_numba(height, width, maxiterations=20):
+%%     y, x = numpy.ogrid[-1:0:height*1j, -1.5:0:width*1j]
+%%     c = x + y*1j
+%%     fractal = numpy.full(c.shape, maxiterations, dtype=numpy.int32)
+%%     for h in range(height):
+%%         for w in range(width):                  # for each pixel (h, w)...
+%%             z = c[h, w]
+%%             for i in range(maxiterations):      # iterate at most 20 times
+%%                 z = z**2 + c[h, w]              # applying z → z² + c
+%%                 if abs(z) > 2:                  # if it diverges (|z| > 2)
+%%                     fractal[h, w] = i           # color the plane with the iteration number
+%%                     break                       # we're done, no need to keep iterating
+%%     return fractal
+%% \end{minted}
+%% \end{onlyenv}
+
 %% \end{frame}
 
 \end{document}
