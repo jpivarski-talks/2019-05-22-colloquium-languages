@@ -336,18 +336,22 @@ We favor \textcolor{darkblue}{high-level} and \textcolor{darkblue}{domain-specif
 \end{frame}
 
 \begin{frame}[fragile]{But it really isn't the language; it's the implementation.}
+\vspace{0.5 cm}
+\hfill\mbox{\includegraphics[height=3 cm]{performance-test-fractal.png}\hspace{-0.25 cm}}
+
+\vspace{-2.5 cm}
 \scriptsize
 \begin{columns}
 \column{1.08\linewidth}
 \begin{onlyenv}<1>
 \begin{minted}{python}
-import time
 import numpy
 
-def run_python(height, width, maxiterations=20):
+def run(height, width, maxiterations=20):
     y, x = numpy.ogrid[-1:0:height*1j, -1.5:0:width*1j]
     c = x + y*1j
-    fractal = numpy.full(c.shape, maxiterations, dtype=numpy.int32)
+    fractal = numpy.full(c.shape, maxiterations,
+                                  dtype=numpy.int32)
     for h in range(height):
         for w in range(width):                  # for each pixel (h, w)...
             z = c[h, w]
@@ -356,18 +360,19 @@ def run_python(height, width, maxiterations=20):
                 if abs(z) > 2:                  # if it diverges (|z| > 2)
                     fractal[h, w] = i           # color the plane with the iteration number
                     break                       # we're done, no need to keep iterating
+
     return fractal
 \end{minted}
 \end{onlyenv}
 \begin{onlyenv}<2>
 \begin{minted}{python}
-import numba
-
+import numpy, numba
 @numba.jit
-def run_numba(height, width, maxiterations=20):
+def run(height, width, maxiterations=20):
     y, x = numpy.ogrid[-1:0:height*1j, -1.5:0:width*1j]
     c = x + y*1j
-    fractal = numpy.full(c.shape, maxiterations, dtype=numpy.int32)
+    fractal = numpy.full(c.shape, maxiterations,
+                                  dtype=numpy.int32)
     for h in range(height):
         for w in range(width):                  # for each pixel (h, w)...
             z = c[h, w]
@@ -376,16 +381,35 @@ def run_numba(height, width, maxiterations=20):
                 if abs(z) > 2:                  # if it diverges (|z| > 2)
                     fractal[h, w] = i           # color the plane with the iteration number
                     break                       # we're done, no need to keep iterating
+
     return fractal
 \end{minted}
 \end{onlyenv}
 \end{columns}
 
-\LARGE
+\large
+\vspace{0.25 cm}
 \begin{center}
-Runs 50$\times$ faster than pure Python
-
+\uncover<2->{Runs \textcolor{darkorange}{\bf 50$\times$ faster} than pure Python, \textcolor{darkorange}{\bf about equal} to C code ({\tt -O3}).}
 \end{center}
+\end{frame}
+
+\begin{frame}{Here's the catch}
+\large
+\vspace{0.5 cm}
+The \mintinline{python}{@numba.jit} decorator translates {\it a subset of} Python bytecode to machine instructions. You only get a speedup for statically typable, numeric code.
+
+\begin{center}
+\Large \uncover<2->{Same language, completely different implementation.}
+\end{center}
+
+\begin{uncoverenv}<3->
+\begin{center}
+\includegraphics[width=0.4\linewidth]{hurdle9.jpg}
+\end{center}
+
+Python is slower than Numba because it has more hurdles in the way: dynamic typing, pointer-chasing, garbage collection, string lookups\ldots
+\end{uncoverenv}
 \end{frame}
 
 
