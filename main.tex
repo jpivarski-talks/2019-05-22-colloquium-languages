@@ -524,9 +524,35 @@ for (int i0; i0 < 3; i0++) {
 \end{center}
 \end{frame}
 
+\begin{frame}[fragile]{Domain specific languages that you're probably already using}
+\LARGE
+\vspace{0.25 cm}
+
+\textcolor{darkblue}{Template strings}
+
+\vspace{0.5 cm}
+{\large \textcolor{darkblue}{printf/scanf:} distinct syntax from C/C++, must be quoted}
+
+\small
+\begin{minted}{c++}
+printf("Error 0x%04x: %s", id, errors[id]);
+\end{minted}
+
+\vspace{0.5 cm}
+{\large \textcolor{darkblue}{I/O streams:} defined within C/C++ via operator overloading}
+
+\small
+\begin{minted}{c++}
+std::cout << "Error 0x" << std::hex << std::setfill('0')
+          << std::setw(4) << id << ": " << errors[id] << std::endl;
+\end{minted}
+\end{frame}
+
+\begin{frame}{}
 
 
 
+\end{frame}
 
 
 
