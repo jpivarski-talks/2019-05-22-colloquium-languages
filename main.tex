@@ -466,6 +466,52 @@ It can be helpful to create \textcolor{darkblue}{specialized languages} for \tex
 \end{center}
 \end{frame}
 
+\begin{frame}[fragile]{Domain specific languages that you're probably already using}
+\LARGE
+\vspace{0.5 cm}
+
+\textcolor{darkblue}{TTree::Draw (TTreeFormula)}
+
+\vspace{-1 cm}
+\normalsize
+\begin{columns}
+\column{0.61\linewidth}
+\begin{minted}{c++}
+ttree->Draw("lep1_p4.X() + lep1_p4.Y()");
+\end{minted}
+
+\column{0.3\linewidth}
+\includegraphics[width=\linewidth]{ttree-draw.pdf}
+\end{columns}
+
+\vspace{-0.5 cm}
+\textcolor{darkblue}{\large Looping and reducing constructs:}
+
+\vspace{0.25 cm}
+\begin{columns}
+\column{0.35\linewidth}
+\mintinline{c++}{"fMatrix[][fResults[][]]"}
+
+\column{0.02\linewidth}
+\mbox{\hspace{0.5 cm}$\longrightarrow$}
+
+\column{0.5\linewidth}
+\scriptsize
+\begin{minted}{c++}
+for (Int_t i0; i0 < 3; i0++) {
+   for (Int_t j2; j2 < 5; j2++) {
+      for (Int_t j3; j3 < 2; j3++) {
+         i1 = fResults[j2][j3];
+         use the value of fMatrix[i0][i1]
+   }
+}
+\end{minted}
+\end{columns}
+
+\vspace{0.5 cm}
+\mbox{\tt\small Length\$($\cdot$) Sum\$($\cdot$) Min\$($\cdot$) Max\$($\cdot$) MinIf\$($\cdot$,$\cdot$) MaxIf\$($\cdot$,$\cdot$) Alt\$($\cdot$,$\cdot$)\hspace{1 cm}}
+\end{frame}
+
 
 %% \begin{frame}[fragile]
 %% \frametitle{Map-reduce}
