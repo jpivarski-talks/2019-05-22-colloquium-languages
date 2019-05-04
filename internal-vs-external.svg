@@ -105,8 +105,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="2"
-     inkscape:cx="364.62708"
-     inkscape:cy="197.64681"
+     inkscape:cx="81.62708"
+     inkscape:cy="78.14681"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -156,7 +156,7 @@
          id="tspan1405"
          x="-69.607162"
          y="14.769814"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777767px;font-family:Nice;-inkscape-font-specification:Nice;stroke-width:0.25993037">external parameters</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777767px;font-family:Nice;-inkscape-font-specification:Nice;stroke-width:0.25993037">#external parameters</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777767px;line-height:1.25;font-family:Nice;-inkscape-font-specification:Nice;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25993037"
@@ -167,7 +167,7 @@
          id="tspan1409"
          x="55.242001"
          y="92.884949"
-         style="font-size:3.52777767px;stroke-width:0.25993037">internal parameters</tspan></text>
+         style="font-size:3.52777767px;stroke-width:0.25993037">#internal parameters</tspan></text>
     <path
        style="opacity:1;vector-effect:none;fill:#ffff00;fill-opacity:1;stroke:#000000;stroke-width:0.39687499;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.396875, 0.396875;stroke-dashoffset:0;stroke-opacity:1"
        d="m 84.630057,84.009039 c -3.272693,0.162568 -6.87191,-0.06626 -10.212673,0.737634 -0.788939,0.304905 -2.060624,1.198813 -1.224654,2.105074 0.690778,0.711934 1.785448,0.547586 2.686244,0.565817 1.222228,-0.08369 2.443951,-0.187828 3.668719,-0.19313 3.818449,-0.222103 7.656652,0.209172 11.465654,-0.221952 0.750209,-0.223568 1.659163,-0.506665 2.21279,-1.120761 1.877048,-2.082065 -5.958304,-1.94363 -8.59608,-1.872682 z"
