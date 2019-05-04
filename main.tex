@@ -408,7 +408,7 @@ The \mintinline{python}{@numba.jit} decorator translates {\it a subset of} Pytho
 \includegraphics[width=0.4\linewidth]{hurdle9.jpg}
 \end{center}
 
-Python is slower than Numba because it has more hurdles in the way: dynamic typing, pointer-chasing, garbage collection, string lookups\ldots
+Python is slower than Numba or C because it has more hurdles in the way: dynamic typing, pointer-chasing, garbage collection, hashtables, string equality\ldots
 \end{uncoverenv}
 \end{frame}
 
@@ -426,17 +426,45 @@ Python is slower than Numba because it has more hurdles in the way: dynamic typi
 Languages aren't slow; interpretations are.
 
 \vspace{1 cm}
-But an implementation can be hampered by \\ all the flexibility a language promises.
+But an implementation can be hampered by \\ all the flexibility the language promises.
 \end{center}
 \end{frame}
 
 \begin{frame}{}
-
-
-
+\begin{columns}[t]
+\column{1.16\linewidth}
+\includegraphics[width=\linewidth]{less-powerful.png}
+\end{columns}
 \end{frame}
 
+\begin{frame}{Domain specific languages}
+\large
+\vspace{0.5 cm}
+It can be helpful to create \textcolor{darkblue}{specialized languages} for \textcolor{darkblue}{narrowly defined problems}.
 
+\vspace{0.5 cm}
+\begin{columns}
+\column{0.85\linewidth}
+\begin{itemize}\setlength{\itemsep}{0.5 cm}
+\item \textcolor{darkblue}{Main purpose:} reduces complexity, the mental clutter that obscures general-purpose languages.
+\item \textcolor{darkblue}{Secondary purpose:} limited flexibility allows for streamlined implementations.
+\end{itemize}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Domain specific languages that you're probably already using}
+\end{frame}
+
+\begin{frame}{Domain specific languages that you're probably already using}
+\LARGE
+\vspace{0.25 cm}
+
+\textcolor{darkblue}{Regular expressions}
+
+\begin{center}
+\includegraphics[width=0.7\linewidth]{regex.png}
+\end{center}
+\end{frame}
 
 
 %% \begin{frame}[fragile]
