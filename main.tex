@@ -333,8 +333,61 @@ We favor \textcolor{darkblue}{high-level} and \textcolor{darkblue}{domain-specif
 
 \vspace{-0.5 cm}
 \mbox{ }\hfill\textcolor{blue}{\tiny \url{https://benchmarksgame-team.pages.debian.net/benchmarksgame}}\hfill\mbox{ }
-
 \end{frame}
+
+\begin{frame}[fragile]{But it really isn't the language; it's the implementation.}
+\scriptsize
+\begin{columns}
+\column{1.08\linewidth}
+\begin{onlyenv}<1>
+\begin{minted}{python}
+import time
+import numpy
+
+def run_python(height, width, maxiterations=20):
+    y, x = numpy.ogrid[-1:0:height*1j, -1.5:0:width*1j]
+    c = x + y*1j
+    fractal = numpy.full(c.shape, maxiterations, dtype=numpy.int32)
+    for h in range(height):
+        for w in range(width):                  # for each pixel (h, w)...
+            z = c[h, w]
+            for i in range(maxiterations):      # iterate at most 20 times
+                z = z**2 + c[h, w]              # applying z → z² + c
+                if abs(z) > 2:                  # if it diverges (|z| > 2)
+                    fractal[h, w] = i           # color the plane with the iteration number
+                    break                       # we're done, no need to keep iterating
+    return fractal
+\end{minted}
+\end{onlyenv}
+\begin{onlyenv}<2>
+\begin{minted}{python}
+import numba
+
+@numba.jit
+def run_numba(height, width, maxiterations=20):
+    y, x = numpy.ogrid[-1:0:height*1j, -1.5:0:width*1j]
+    c = x + y*1j
+    fractal = numpy.full(c.shape, maxiterations, dtype=numpy.int32)
+    for h in range(height):
+        for w in range(width):                  # for each pixel (h, w)...
+            z = c[h, w]
+            for i in range(maxiterations):      # iterate at most 20 times
+                z = z**2 + c[h, w]              # applying z → z² + c
+                if abs(z) > 2:                  # if it diverges (|z| > 2)
+                    fractal[h, w] = i           # color the plane with the iteration number
+                    break                       # we're done, no need to keep iterating
+    return fractal
+\end{minted}
+\end{onlyenv}
+\end{columns}
+
+\LARGE
+\begin{center}
+Runs 50$\times$ faster than pure Python
+
+\end{center}
+\end{frame}
+
 
 
 %% \begin{frame}[fragile]
@@ -425,47 +478,6 @@ We favor \textcolor{darkblue}{high-level} and \textcolor{darkblue}{domain-specif
 %% \begin{frame}[fragile]{}
 %% 50$\times$
 
-%% \scriptsize
-%% \begin{onlyenv}<1>
-%% \begin{minted}{python}
-%% import time
-%% import numpy
-
-%% def run_python(height, width, maxiterations=20):
-%%     y, x = numpy.ogrid[-1:0:height*1j, -1.5:0:width*1j]
-%%     c = x + y*1j
-%%     fractal = numpy.full(c.shape, maxiterations, dtype=numpy.int32)
-%%     for h in range(height):
-%%         for w in range(width):                  # for each pixel (h, w)...
-%%             z = c[h, w]
-%%             for i in range(maxiterations):      # iterate at most 20 times
-%%                 z = z**2 + c[h, w]              # applying z → z² + c
-%%                 if abs(z) > 2:                  # if it diverges (|z| > 2)
-%%                     fractal[h, w] = i           # color the plane with the iteration number
-%%                     break                       # we're done, no need to keep iterating
-%%     return fractal
-%% \end{minted}
-%% \end{onlyenv}
-%% \begin{onlyenv}<2>
-%% \begin{minted}{python}
-%% import numba
-
-%% @numba.jit
-%% def run_numba(height, width, maxiterations=20):
-%%     y, x = numpy.ogrid[-1:0:height*1j, -1.5:0:width*1j]
-%%     c = x + y*1j
-%%     fractal = numpy.full(c.shape, maxiterations, dtype=numpy.int32)
-%%     for h in range(height):
-%%         for w in range(width):                  # for each pixel (h, w)...
-%%             z = c[h, w]
-%%             for i in range(maxiterations):      # iterate at most 20 times
-%%                 z = z**2 + c[h, w]              # applying z → z² + c
-%%                 if abs(z) > 2:                  # if it diverges (|z| > 2)
-%%                     fractal[h, w] = i           # color the plane with the iteration number
-%%                     break                       # we're done, no need to keep iterating
-%%     return fractal
-%% \end{minted}
-%% \end{onlyenv}
 
 %% \end{frame}
 
