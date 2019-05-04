@@ -548,14 +548,58 @@ std::cout << "Error 0x" << std::hex << std::setfill('0')
 \end{minted}
 \end{frame}
 
-\begin{frame}{}
+\begin{frame}[fragile]{External versus internal (embedded) domain-specific languages}
+\vspace{0.3 cm}
 
+{\large \textcolor{darkblue}{External:} SQL has a distinct syntax from Python; must be quoted.}
 
+\small
+\vspace{-0.25 cm}
+\begin{columns}
+\column{0.85\linewidth}
+\begin{minted}{python}
+import pyspark
+pyspark.sql("""
+    SELECT CONCAT(first, " ", last) AS fullname, AVG(age)
+        FROM my_table WHERE age BETWEEN 18 AND 24
+        GROUP BY fullname
+""")
+\end{minted}
+\end{columns}
 
+\vspace{0.5 cm}
+{\large \textcolor{darkblue}{Internal (embedded):} SparkSQL is an equivalent language, defined within Python.}
+
+\small
+\vspace{-0.25 cm}
+\begin{columns}
+\column{0.85\linewidth}
+\begin{minted}{python}
+import pyspark.sql.functions as F
+df = pyspark.read.load("my_table")
+(df.withColumn("fullname",
+        F.concat(F.col("first"), F.lit(" "), F.col("last")))
+   .select("fullname", "age")
+   .where(df.age.between(18, 24))
+   .groupBy("fullname")
+   .agg(F.mean("age")))
+\end{minted}
+\end{columns}
 \end{frame}
 
+\begin{frame}{}
+\large
+\vspace{1.5 cm}
+\textcolor{darkblue}{\Large Objection:} a collection of libraries and operator overloads isn't a language!
 
+\vspace{1 cm}
+\begin{uncoverenv}<2->
+\textcolor{darkblue}{\Large My answer:} programming languages are human modes of expression, which are implemented in other programming languages, all the way down to logic gates.
 
+\vspace{0.25 cm}
+It hardly matters if one of those steps is a library of functions, instead of a parser.
+\end{uncoverenv}
+\end{frame}
 
 
 %% \begin{frame}[fragile]
