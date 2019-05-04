@@ -441,7 +441,7 @@ But an implementation can be hampered by \\ all the flexibility the language pro
 \end{columns}
 \end{frame}
 
-\begin{frame}{Domain specific languages}
+\begin{frame}{Domain-specific languages}
 \large
 \vspace{0.5 cm}
 It can be helpful to create \textcolor{darkblue}{specialized languages} for \textcolor{darkblue}{narrowly defined problems}.
@@ -456,7 +456,7 @@ It can be helpful to create \textcolor{darkblue}{specialized languages} for \tex
 \end{columns}
 \end{frame}
 
-\begin{frame}{Domain specific languages that you're probably already using}
+\begin{frame}{Domain-specific languages that you're probably already using}
 \huge
 \vspace{1 cm}
 \begin{center}
@@ -464,7 +464,7 @@ Any guesses?
 \end{center}
 \end{frame}
 
-\begin{frame}{Domain specific languages that you're probably already using}
+\begin{frame}{Domain-specific languages that you're probably already using}
 \LARGE
 \vspace{0.25 cm}
 
@@ -475,7 +475,7 @@ Any guesses?
 \end{center}
 \end{frame}
 
-\begin{frame}[fragile]{Domain specific languages that you're probably already using}
+\begin{frame}[fragile]{Domain-specific languages that you're probably already using}
 \LARGE
 \vspace{0.5 cm}
 
@@ -523,7 +523,7 @@ for (int i0; i0 < 3; i0++) {
 \end{uncoverenv}
 \end{frame}
 
-\begin{frame}{Domain specific languages that you're probably already using}
+\begin{frame}{Domain-specific languages that you're probably already using}
 \LARGE
 \vspace{0.25 cm}
 
@@ -535,7 +535,7 @@ for (int i0; i0 < 3; i0++) {
 \end{center}
 \end{frame}
 
-\begin{frame}[fragile]{Domain specific languages that you're probably already using}
+\begin{frame}[fragile]{Domain-specific languages that you're probably already using}
 \LARGE
 \vspace{0.25 cm}
 
@@ -615,7 +615,7 @@ What matters is that it's a coherent set of concepts, not whether or not it's im
 \end{uncoverenv}
 \end{frame}
 
-\begin{frame}[fragile]{Scala: a language for internal domain specific languages}
+\begin{frame}[fragile]{Scala: a language for internal domain-specific languages}
 \large
 \vspace{0.5 cm}
 In Scala, a class's methods can be accessed through a dot or a space.
@@ -697,6 +697,94 @@ class VendingMachine extends Component {
 \end{columns}
 \end{frame}
 
+\begin{frame}{}
+\Large
+\vspace{1 cm}
+\begin{columns}
+\column{1.1\linewidth}
+\begin{center}
+Perhaps the most widespread domain-specific language in data analysis:
+
+\vspace{0.5 cm}
+{\Huge SQL}
+
+\vspace{1 cm}
+\uncover<2->{But we rarely use it in particle physics. Why?}
+\end{center}
+\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Typical collider physics problem \only<1>{in C++}\only<2>{in SQL}}
+\large
+\vspace{0.5 cm}
+\textcolor{darkblue}{``Momentum of the track with $|\eta|$ $<$ 2.4 that has the most hits.''}
+
+\small
+\begin{columns}
+\column{0.8\linewidth}
+\begin{onlyenv}<1>
+\begin{minted}[stripnl=false]{c++}
+Track *best = NULL;
+
+for (int i = 0;  i < tracks.size();  i++) {
+  if (fabs(tracks[i]->eta) < 2.4)
+    if (best == NULL ||
+        tracks[i]->hits.size() > best->hits.size())
+      best = tracks[i];
+}
+
+if (best != NULL)
+  return best->pt;
+else
+  return 0.0;
+
+
+\end{minted}
+\end{onlyenv}
+\begin{onlyenv}<2>
+\begin{minted}{sql}
+WITH hit_stats AS (
+  SELECT hit.track_id, COUNT(*) AS hit_count FROM hit
+    GROUP BY hit.track_id),
+ track_sorted AS (
+    SELECT track.*, 
+    ROW_NUMBER() OVER (
+     PARTITION BY track.event_id
+     ORDER BY hit_stats.hit_count DESC)
+  track_ordinal FROM track INNER JOIN hit_stats
+    ON hit_stats.track_id = track.id
+    WHERE ABS(track.eta) < 2.4)
+ SELECT * FROM event INNER JOIN track_sorted
+   ON track_sorted.event_id = event.id
+WHERE
+  track_sorted.track_ordinal = 1
+\end{minted}
+\end{onlyenv}
+\end{columns}
+\end{frame}
+
+\begin{frame}{}
+\large
+\vspace{1.25 cm}
+The problem is that collisions produce a variable number of particles per event: the tables are ``jagged.''
+
+\vspace{0.75 cm}
+\begin{uncoverenv}<2->
+This {\it can be} described in SQL's relational framework:
+
+\begin{itemize}
+\item separate tables for events and particles
+\item linked by a common ``event number'' index.
+\end{itemize}
+
+But each type of particle has to be a separate table and each operation has to be \mintinline{sql}{INNER JOIN}ed to maintain events as objects.
+\end{uncoverenv}
+
+\vspace{0.75 cm}
+\uncover<3->{SQL makes particle physics problems {\it harder}, not {\it easier}, which defeats the point.}
+\end{frame}
+
+
 
 %% \begin{frame}[fragile]
 %% \frametitle{Map-reduce}
@@ -731,57 +819,6 @@ class VendingMachine extends Component {
 %% \mbox{ } \hfill \includegraphics[width=0.6\linewidth]{PLOTS/mapreduce-diagram-by-ibm.png} \hfill \mbox{ }
 %% \end{frame}
 
-%% \begin{frame}[fragile]{Nested query in C++}
-%% \vspace{0.5 cm}
-%% {\bf Example query:}
-%% \begin{center}
-%% \begin{minipage}{0.95\linewidth}
-%% \textcolor{darkblue}{``Momentum of the track with $|\eta|$ $<$ 2.4 that has the most hits.''}
-%% \end{minipage}
-%% \end{center}
-%% \small
-%% \begin{minted}{c++}
-%% Track *best = NULL;
-%% for (int i = 0;  i < tracks.size();  i++) {
-%%   if (fabs(tracks[i]->eta) < 2.4)
-%%     if (best == NULL ||
-%%         tracks[i]->hits.size() > best->hits.size())
-%%       best = tracks[i];
-%% }
-%% if (best != NULL)
-%%   return best->pt;
-%% else
-%%   return 0.0;
-%% \end{minted}
-%% \end{frame}
-
-%% \begin{frame}[fragile]{Nested query in SQL}
-%% \vspace{0.5 cm}
-%% {\bf Example query:}
-%% \begin{center}
-%% \begin{minipage}{0.95\linewidth}
-%% \textcolor{darkblue}{``Momentum of the track with $|\eta|$ $<$ 2.4 that has the most hits.''}
-%% \end{minipage}
-%% \end{center}
-%% \small
-%% \begin{minted}{sql}
-%% WITH hit_stats AS (
-%%   SELECT hit.track_id, COUNT(*) AS hit_count FROM hit
-%%     GROUP BY hit.track_id),
-%%  track_sorted AS (
-%%     SELECT track.*, 
-%%     ROW_NUMBER() OVER (
-%%      PARTITION BY track.event_id
-%%      ORDER BY hit_stats.hit_count DESC)
-%%   track_ordinal FROM track INNER JOIN hit_stats
-%%     ON hit_stats.track_id = track.id
-%%     WHERE ABS(track.eta) < 2.4)
-%%  SELECT * FROM event INNER JOIN track_sorted
-%%    ON track_sorted.event_id = event.id
-%% WHERE
-%%   track_sorted.track_ordinal = 1
-%% \end{minted}
-%% \end{frame}
 
 %% \begin{frame}[fragile]{}
 %% 50$\times$
