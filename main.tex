@@ -83,7 +83,7 @@ Because, you know, it's different water.
 \vspace{1.5 cm}
 \begin{columns}
 \column{1.02\linewidth}
-\textcolor{darkblue}{\huge Why do we say it's the same river?}
+\textcolor{darkblue}{\huge Why do we say it's the same river anyway?}
 
 \vspace{0.5 cm}
 \uncover<2->{We associate an enormous number of microscopic states (``molecules here, molecules there'') with a single macroscopic state (``the river'').}
@@ -101,7 +101,7 @@ This abstraction is thermodynamics, and it can be exact with the right definitio
 \end{uncoverenv}
 \end{frame}
 
-\begin{frame}[fragile]{Much of computer science is about abstracting details, too.}
+\begin{frame}[fragile]{Most of computer science is about abstracting details, too.}
 \scriptsize
 \vspace{0.05 cm}
 \begin{minted}{c++}
@@ -210,22 +210,22 @@ As a young programmer, I wasn't satisfied with high-level languages because I wa
 \LARGE
 \vspace{1 cm}
 \begin{center}
-A computer is a set of physical states \\ {\it that we interpret} as computations.
+A computer is a set of physical states \\ \underline{\it that we interpret} as computations.
 
 \vspace{0.2 cm}
 \includegraphics[width=0.4\linewidth]{abacus.jpg}
 \end{center}
 \end{frame}
 
-\begin{frame}{Programming languages are how we describe those computations.}
+\begin{frame}{Programming languages are how we \underline{\it describe} those computations.}
 \Large
-\vspace{0.1 cm}
-\begin{center}
-\uncover<2->{Some languages are better than others.}
-\end{center}
-
-\vspace{0.1 cm}
+\vspace{0.75 cm}
 \includegraphics[width=\linewidth]{abacus_ptolemy_al-khwarizmi.pdf}
+
+\vspace{-0.2 cm}
+\begin{center}
+\uncover<2->{(And some languages are better at it than others.)}
+\end{center}
 \end{frame}
 
 \begin{frame}{}
@@ -251,7 +251,7 @@ logic gates & \textcolor{darkblue}{interpreted as} & computation
 \end{uncoverenv}
 
 \vspace{0.75 cm}
-\uncover<3->{\Large Only the last level pushes the abacus beads.}
+\uncover<3->{\Large Only the last actually pushes the abacus beads.}
 \end{center}
 \end{frame}
 
@@ -266,16 +266,20 @@ logic gates & \textcolor{darkblue}{interpreted as} & computation
 \end{columns}
 
 \vspace{0.5 cm}
+\begin{uncoverenv}<2->
 \begin{columns}
 \column{1.05\linewidth}
 \textcolor{darkblue}{John McCarthy, creator of Lisp:} ``This EVAL was written and published in the paper and Steve Russel said, `Look, why don't I program this EVAL?' and I said to him, `Ho, ho, you're confusing theory with practice---this EVAL is intended for reading, not for computing!' But he went ahead and did it.''
 \end{columns}
+\end{uncoverenv}
 
 \vspace{0.5 cm}
+\begin{uncoverenv}<3->
 \begin{columns}
 \column{1.05\linewidth}
 \textcolor{darkblue}{APL (ancestor of MATLAB, R, and Numpy)} was also a notation for describing programs years before it was executable. The book was named {\it A Programming Language}.
 \end{columns}
+\end{uncoverenv}
 \end{frame}
 
 \begin{frame}{}
@@ -292,7 +296,7 @@ That's why they called it ``coding.'' It was a manual process.
 \begin{frame}{The Software Crisis}
 \large
 \vspace{1 cm}
-Now that our programming languages {\it do} push abacus beads, software engineering has become an odd discipline: \textcolor{darkblue}{expressing something is the same as creating it.}
+Now that our programming languages {\it do} push abacus beads, software engineering has become an odd discipline: \textcolor{darkblue}{describing something is the same as creating it.}
 
 \vspace{1 cm}
 \begin{uncoverenv}<2->
@@ -314,7 +318,7 @@ And yet, we {\it still} get it wrong.
 We favor \textcolor{darkblue}{high-level} and \textcolor{darkblue}{domain-specific} languages because they have fewer concepts, hopefully just the ones that are relevant for the problem.
 
 \vspace{1 cm}
-\uncover<2->{\textcolor{darkorange}{\bf But what about speed?} We frequently choose programming languages for speed.}
+\uncover<2->{\textcolor{darkorange}{\bf But what about speed?} We often choose programming languages for speed.}
 
 \vspace{1 cm}
 \begin{uncoverenv}<3->
@@ -327,7 +331,7 @@ We favor \textcolor{darkblue}{high-level} and \textcolor{darkblue}{domain-specif
 \end{columns}
 \end{frame}
 
-\begin{frame}{Except Python. Python is slow.}
+\begin{frame}{Except Python. Python is slow, right?}
 \vspace{0.25 cm}
 \includegraphics[width=\linewidth]{benchmark-games.png}
 
@@ -453,6 +457,11 @@ It can be helpful to create \textcolor{darkblue}{specialized languages} for \tex
 \end{frame}
 
 \begin{frame}{Domain specific languages that you're probably already using}
+\huge
+\vspace{1 cm}
+\begin{center}
+Any guesses?
+\end{center}
 \end{frame}
 
 \begin{frame}{Domain specific languages that you're probably already using}
@@ -485,6 +494,7 @@ ttree->Draw("lep1_p4.X() + lep1_p4.Y()");
 \end{columns}
 
 \vspace{-0.5 cm}
+\begin{uncoverenv}<2->
 \textcolor{darkblue}{\large Looping and reducing constructs:}
 
 \vspace{0.25 cm}
@@ -510,6 +520,7 @@ for (int i0; i0 < 3; i0++) {
 
 \vspace{0.5 cm}
 \mbox{\tt\small Length\$($\cdot$) Sum\$($\cdot$) Min\$($\cdot$) Max\$($\cdot$) MinIf\$($\cdot$,$\cdot$) MaxIf\$($\cdot$,$\cdot$) Alt\$($\cdot$,$\cdot$)\hspace{1 cm}}
+\end{uncoverenv}
 \end{frame}
 
 \begin{frame}{Domain specific languages that you're probably already using}
@@ -528,7 +539,7 @@ for (int i0; i0 < 3; i0++) {
 \LARGE
 \vspace{0.25 cm}
 
-\textcolor{darkblue}{Template strings}
+\textcolor{darkblue}{Format strings}
 
 \vspace{0.5 cm}
 {\large \textcolor{darkblue}{printf/scanf:} distinct syntax from C/C++, must be quoted}
@@ -594,11 +605,96 @@ df = pyspark.read.load("my_table")
 
 \vspace{1 cm}
 \begin{uncoverenv}<2->
-\textcolor{darkblue}{\Large My answer:} programming languages are human modes of expression, which are implemented in other programming languages, all the way down to logic gates.
+\begin{columns}
+\column{0.87\linewidth}
+\textcolor{darkblue}{\Large My answer:} programming languages are human modes of expression, implemented in other programming languages, all the way down.
+
+\vspace{0.35 cm}
+What matters is that it's a coherent set of concepts, not whether or not it's implemented with a parser.
+\end{columns}
+\end{uncoverenv}
+\end{frame}
+
+\begin{frame}[fragile]{Scala: a language for internal domain specific languages}
+\large
+\vspace{0.5 cm}
+In Scala, a class's methods can be accessed through a dot or a space.
 
 \vspace{0.25 cm}
-It hardly matters if one of those steps is a library of functions, instead of a parser.
+Parentheses are optional on single argument methods, and methods can have unicode names.
+
+\vspace{0.25 cm}
+The following are equivalent:
+
+\small
+\begin{minted}{scala}
+a.cross(b)     // a and b are ThreeVectors, which has a cross method
+a cross b      // the dot and parentheses may be omitted
+a × b          // cross can also be named ×
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{Example: tests in the ScalaTest framework}
+\vspace{0.5 cm}
+
+\small
+\begin{minted}{scala}
+def tests(x: Double, str: String) {
+    f(x) should not equal 7
+
+    List("one", "two", "three") should contain ("two")
+
+    an [IndexOutOfBoundsException] should be thrownBy str.charAt(-1)
+}
+\end{minted}
+
+\begin{uncoverenv}<2->
+\begin{columns}
+\column{1.05\linewidth}
+\normalsize
+\begin{itemize}
+\item Certain types are promoted to implicit classes with \mintinline{scala}{should} methods.
+\item The class returned by \mintinline{scala}{should} has \mintinline{scala}{not}, \mintinline{scala}{contain}, and \mintinline{scala}{be} methods.
+\item Some are parameterized (like C++ templates) by \mintinline{scala}{IndexOutOfBoundsException}.
+\item Evaluation of arguments may be delayed to internally wrap with try-catch logic.
+\end{itemize}
+
+\vspace{0.25 cm}
+\textcolor{darkorange}{\bf We're not thinking about any of those tricks while reading the test code.}
+\end{columns}
 \end{uncoverenv}
+\end{frame}
+
+\begin{frame}[fragile]{Another example: Chisel, a hardware description language in Scala}
+\scriptsize
+\vspace{0.5 cm}
+
+\begin{columns}
+\column{1.05\linewidth}
+\begin{minted}{scala}
+class VendingMachine extends Component {
+  val io = new Bundle {
+    val nickel = Bool(INPUT)
+    val dime   = Bool(INPUT)
+    val ready  = Bool(OUTPUT)
+  }
+  val s_idle :: s_5 :: s_10 :: s_15 :: s_ok :: Nil = Enum(5){ UFIx() }
+  val state = Reg(resetVal = s_idle)
+  switch (state) {
+    is (s_idle) { when (io.nickel) { state := s_5 }  when (io.dime) { state := s_10 } }
+    is (s_5)    { when (io.nickel) { state := s_10 } when (io.dime) { state := s_15 } }
+    is (s_10)   { when (io.nickel) { state := s_15 } when (io.dime) { state := s_ok } }
+    is (s_15)   { when (io.nickel) { state := s_ok } when (io.dime) { state := s_ok } }
+    is (s_ok)   { state := s_idle }
+  }
+  io.ready := (state === s_ok)
+}
+\end{minted}
+
+\large
+\vspace{0.25 cm}
+\textcolor{gray}{(It's a register-transfer level hardware description language like Verilog and VHDL, not high-level synthesis, but much more succinct and parameterizable.)}
+\end{columns}
 \end{frame}
 
 
