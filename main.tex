@@ -101,6 +101,45 @@ This abstraction is thermodynamics, and it can be exact with the right definitio
 \end{uncoverenv}
 \end{frame}
 
+\begin{frame}[fragile]{Much of computer science is about abstracting details, too.}
+\scriptsize
+\vspace{0.05 cm}
+\begin{minted}{c++}
+double bessel_j0(double x) {
+    double out;
+    if (fabs(x) < 8.0) {
+        double y = x*x;
+        double ans1 = 57568490574.0 + y*(-13362590354.0 + y*(651619640.7
+                      + y*(-11214424.18 + y*(77392.33017 + y*(-184.9052456)))));
+        double ans2 = 57568490411.0 + y*(1029532985.0 + y*(9494680.718
+                      + y*(59272.64853 + y*(267.8532712 + y*1.0))));
+        out = ans1 / ans2;
+    }
+    else {
+        double z = 8.0 / fabs(x);
+        double y = z*z;
+        double xx = fabs(x) - 0.785398164;
+        double ans1 = 1.0 + y*(-0.1098628627e-2 + y*(0.2734510407e-4
+                      + y*(-0.2073370639e-5 + y*0.2093887211e-6)));
+        double ans2 = -0.1562499995e-1 + y*(0.1430488765e-3
+                      + y*(-0.6911147651e-5 + y*(0.7621095161e-6
+                      - y*0.934935152e-7)));
+        out = sqrt(0.636619772/fabs(x))*(cos(xx)*ans1 - z*sin(xx)*ans2);
+    }
+    return out;
+}
+\end{minted}
+
+\vspace{-7.95 cm}\hspace{6 cm}{\uncover<2->{\LARGE $\leftarrow$ one value goes in}}
+
+\vspace{6.4 cm}\hspace{6 cm}{\uncover<3->{\LARGE $\leftarrow$ one value comes out}}
+
+\end{frame}
+
+\begin{frame}{}
+
+\end{frame}
+
 
 %% \begin{frame}[fragile]
 %% \frametitle{Map-reduce}
