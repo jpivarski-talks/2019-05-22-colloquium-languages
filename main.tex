@@ -427,13 +427,13 @@ Python is slower than Numba or C because it has more hurdles in the way: dynamic
 \end{frame}
 
 \begin{frame}{}
-\LARGE
+\Large
 \vspace{1 cm}
 \begin{center}
-Languages aren't slow; interpretations are.
+So although it's the implementation, not the language, that's slow,
 
 \vspace{1 cm}
-But an implementation can be hampered by \\ all the flexibility the language promises.
+that implementation can be hampered by the flexibility \\ that the language promises.
 \end{center}
 \end{frame}
 
@@ -444,14 +444,19 @@ But an implementation can be hampered by \\ all the flexibility the language pro
 \end{columns}
 \end{frame}
 
-\begin{frame}{Domain-specific languages}
-\large
-\vspace{0.5 cm}
-It can be helpful to create \textcolor{darkblue}{specialized languages} for \textcolor{darkblue}{narrowly defined problems}.
+\begin{frame}{}
+\LARGE
+\vspace{1.25 cm}
+\textcolor{darkblue}{Domain-specific languages:}
 
 \vspace{0.5 cm}
+\Large
 \begin{columns}
 \column{0.85\linewidth}
+specialized languages for narrowly defined problems.
+
+\large
+\vspace{0.5 cm}
 \begin{itemize}\setlength{\itemsep}{0.5 cm}
 \item \textcolor{darkblue}{Main purpose:} reduces complexity, the mental clutter that obscures general-purpose languages.
 \item \textcolor{darkblue}{Secondary purpose:} limited flexibility allows for streamlined implementations.
@@ -560,12 +565,18 @@ printf("Error 0x%04x: %s", id, errors[id]);
 std::cout << "Error 0x" << std::hex << std::setfill('0')
           << std::setw(4) << id << ": " << errors[id] << std::endl;
 \end{minted}
+
+\normalsize
+\vspace{0.05 cm}
+\begin{center}
+\uncover<2->{\textcolor{darkblue}{printf/scanf} is ``external'' and \textcolor{darkblue}{I/O streams} is ``internal'' (embedded)}
+\end{center}
 \end{frame}
 
 \begin{frame}[fragile]{External versus internal (embedded) domain-specific languages}
 \vspace{0.3 cm}
 
-{\large \textcolor{darkblue}{External:} SQL has a distinct syntax from Python; must be quoted.}
+{\large \textcolor{darkblue}{External:} SQL has a distinct syntax from Python; must be quoted in PySpark.}
 
 \small
 \vspace{-0.25 cm}
@@ -610,12 +621,15 @@ df = pyspark.read.load("my_table")
 \begin{uncoverenv}<2->
 \begin{columns}
 \column{0.87\linewidth}
-\textcolor{darkblue}{\Large My answer:} programming languages are human modes of expression, implemented in other programming languages, all the way down.
+\textcolor{darkblue}{\Large My answer:} programming languages are human modes of expression, implemented using other programming languages, all the way down.
 
 \vspace{0.35 cm}
-What matters is that it's a coherent set of concepts, not whether or not it's implemented with a parser.
+What matters is whether it's a coherent set of concepts, not whether it was implemented by a parser.
 \end{columns}
 \end{uncoverenv}
+
+\vspace{1 cm}
+\uncover<3->{(One might as well argue about the distinction between languages and dialects.)}
 \end{frame}
 
 \begin{frame}[fragile]{Scala: a language for internal domain-specific languages}
@@ -638,7 +652,7 @@ a × b          // cross can also be named ×
 \end{frame}
 
 \begin{frame}[fragile]{Example: tests in the ScalaTest framework}
-\vspace{0.5 cm}
+\vspace{0.25 cm}
 
 \small
 \begin{minted}{scala}
@@ -651,9 +665,13 @@ def tests(x: Double, str: String) {
 }
 \end{minted}
 
+\vspace{0.25 cm}
 \begin{uncoverenv}<2->
 \begin{columns}
 \column{1.05\linewidth}
+\large
+\textcolor{darkblue}{Works because of syntax magic:}
+
 \normalsize
 \begin{itemize}
 \item Certain types are promoted to implicit classes with \mintinline{scala}{should} methods.
@@ -662,8 +680,9 @@ def tests(x: Double, str: String) {
 \item Evaluation of arguments may be delayed to internally wrap with try-catch logic.
 \end{itemize}
 
+\large
 \vspace{0.25 cm}
-\textcolor{darkorange}{\bf We're not thinking about any of those tricks while reading the test code.}
+\uncover<3->{\textcolor{darkorange}{\bf We're not thinking about any of that when we read the test code.}}
 \end{columns}
 \end{uncoverenv}
 \end{frame}
