@@ -22,6 +22,7 @@
 \usepackage{minted}
 \usepackage[thicklines]{cancel}
 \usepackage{fancyvrb}
+\usepackage{amsmath}
 
 \xdefinecolor{dianablue}{rgb}{0.18,0.24,0.31}
 \xdefinecolor{darkblue}{rgb}{0.1,0.1,0.7}
@@ -845,7 +846,7 @@ I think the answer is cultural, so I'll take a historical perspective\ldots
 \end{center}
 \end{frame}
 
-\begin{frame}{The U.S.\ Census problem}
+\begin{frame}{U.S.\ Census's problem}
 \large
 \vspace{0.35 cm}
 The U.S.\ does a census every 10 years. The 1880 census took 8 years to process.
@@ -905,6 +906,25 @@ The computation represented by this machine is not universal (Turing complete), 
 \end{columns}
 \end{frame}
 
+\begin{frame}{Google's problem}
+\large
+\vspace{0.45 cm}
+In the early 2000's, Google was struggling to keep up with the growing web (index 5 months out of date, routine hardware failures, scale sensitive to bit flips).
+
+\vspace{0.7 cm}
+\uncover<2->{Each programmer had to divide tasks and combine results manually, accounting for failures manually.}
+
+\vspace{0.7 cm}
+\uncover<3->{2003: task distribution automated by the in-house MapReduce framework.}
+
+\vspace{0.7 cm}
+\mbox{ } \hfill \uncover<4->{MapReduce is distributed $\underbrace{\mbox{\textcolor{darkorange}{\bf SELECT}-\textcolor{darkorange}{\bf WHERE}}}_{\mbox{``map''}}\mbox{-}\underbrace{\mbox{\textcolor{darkorange}{\bf GROUP BY}}}_{\mbox{``reduce''}}$.} \hfill \mbox{ }
+
+\vspace{0.7 cm}
+\uncover<5->{\textcolor{gray}{2004: published by Dean and Ghemawat}}
+
+\uncover<5->{\textcolor{gray}{2006: implemented in open-source as Hadoop.}}
+\end{frame}
 
 
 %% \begin{frame}[fragile]
