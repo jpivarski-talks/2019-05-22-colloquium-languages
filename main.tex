@@ -79,7 +79,7 @@ Because, you know, it's different water.
 \end{center}
 \end{frame}
 
-\begin{frame}{Why do we say it's the same river anyway?}
+\begin{frame}{Why do we say it's the same river?}
 \LARGE
 \vspace{0.5 cm}
 \begin{columns}
@@ -410,7 +410,7 @@ def run(height, width, maxiterations=20):
 The \mintinline{python}{@numba.jit} decorator translates {\it a subset of} Python bytecode to machine instructions. You only get a speedup for statically typable, numeric code.
 
 \begin{center}
-\Large \uncover<2->{Same language, completely different implementation.}
+\Large \uncover<2->{Same language (subset), completely different implementation.}
 \end{center}
 
 \begin{uncoverenv}<3->
@@ -418,7 +418,7 @@ The \mintinline{python}{@numba.jit} decorator translates {\it a subset of} Pytho
 \includegraphics[width=0.4\linewidth]{hurdle9.jpg}
 \end{center}
 
-Python is slower than Numba or C because it has more hurdles in the way: dynamic typing, pointer-chasing, garbage collection, hashtables, string equality\ldots
+Pure Python is slower than Numba or C because it has more hurdles in the way: dynamic typing, pointer-chasing, garbage collection, hashtables, string equality\ldots
 \end{uncoverenv}
 \end{frame}
 
@@ -635,10 +635,10 @@ What matters is whether it's a coherent set of concepts, not whether it was impl
 \uncover<3->{(One might as well argue about the distinction between languages and dialects.)}
 \end{frame}
 
-\begin{frame}[fragile]{Behold the flexibility of Scala!}
+\begin{frame}[fragile]{Behold the language-making capabilities of Scala!}
 \large
 \vspace{0.5 cm}
-In Scala, a class's methods can be accessed through a dot or a space.
+In Scala, a class's methods can be accessed {\it either} with a dot {\it or} a space.
 
 \vspace{0.25 cm}
 Parentheses are optional on single argument methods, and methods can have unicode names.
@@ -654,7 +654,7 @@ a × b          // cross can also be named ×
 \end{minted}
 \end{frame}
 
-\begin{frame}[fragile]{What you can do with that: ScalaTest}
+\begin{frame}[fragile]{You can do crazy stuff with that: ScalaTest}
 \vspace{0.25 cm}
 
 \small
@@ -685,7 +685,7 @@ def unitTests(x: Double, str: String) {
 
 \large
 \vspace{0.25 cm}
-\uncover<3->{\textcolor{darkorange}{\bf We're not thinking about any of that when we read the test code.}}
+\uncover<3->{\textcolor{darkorange}{\bf We're not thinking about syntax magic when we read the test code.}}
 \end{columns}
 \end{uncoverenv}
 \end{frame}
@@ -914,7 +914,7 @@ Herman Hollerith (inventor) incorporated the Tabulating Machine Company, which a
 In the early 2000's, Google was struggling to keep up with the growing web (index 5 months out of date, routine hardware failures, scale sensitive to bit flips).
 
 \vspace{0.7 cm}
-\uncover<2->{Each programmer had to divide tasks and combine results manually and account for failures manually.}
+\uncover<2->{At that time, each programmer had to divide tasks, distribute, and combine results manually and account for failures manually.}
 
 \vspace{0.7 cm}
 \uncover<3->{2003: MapReduce created to abstract task management from analysis logic.}
@@ -938,8 +938,8 @@ In the early 2000's, Google was struggling to keep up with the growing web (inde
 \begin{minted}[stripnl=false]{python}
 def map(webpage):
     for word in webpage.split():
-        yield (word, webpage)
-
+        if not stopword(word):
+            yield (word, webpage)
 \end{minted}
 
 \column{0.45\linewidth}
@@ -954,7 +954,7 @@ def reduce(word, webpages):
 \end{minted}
 \end{columns}
 
-\vspace{0.25 cm}
+\vspace{0.4 cm}
 \mbox{ } \hfill \includegraphics[width=0.55\linewidth]{mapreduce-diagram-by-ibm.png} \hfill \mbox{ }
 \end{frame}
 
@@ -962,7 +962,10 @@ def reduce(word, webpages):
 \LARGE
 \vspace{1.25 cm}
 \begin{center}
-Physics and computing crossed paths in a different way.
+That's how statisticians encountered computing.
+
+\vspace{1.5 cm}
+Physics encountered computing differently.
 \end{center}
 \end{frame}
 
@@ -974,10 +977,10 @@ Physics and computing crossed paths in a different way.
 \includegraphics[width=\linewidth]{presper-and-mauchly.jpg}
 
 \column{0.7\linewidth}
-1944: John Mauchly (physicist) and J.\ Presper Eckert (electrical engineer) designed ENIAC to replace mechanical computers.
+1944: John Mauchly (physicist) and J.\ Presper Eckert (electrical engineer) designed ENIAC to replace mechanical computers for ballistics.
 
 \vspace{0.25 cm}
-\uncover<2->{ENIAC was one of the first computers driven by machine code instructions, stored as a program in memory.}
+\uncover<2->{ENIAC was one of the first computers \textcolor{darkblue}{driven by machine code instructions}, stored as a program in memory.}
 \end{columns}
 
 \vspace{0.25 cm}
@@ -1090,10 +1093,10 @@ code: X3 03 09 X1 07 Y1 02 04 X1   Y1
 Physicists drove programming language development in the 1940's and 1950's but stuck with FORTRAN until the 21$^{\mbox{\scriptsize st}}$ century.
 
 \vspace{0.7 cm}
-\uncover<2->{In fact, FORTRAN (pre-Fortran 90) wasn't even a good fit to {\it data analysis} problems. It lacks jagged tables just as SQL does.}
+\uncover<2->{In fact, FORTRAN (pre-Fortran 90) wasn't even a good fit to {\it data analysis} problems. It lacked jagged tables just as SQL does.}
 
 \vspace{0.7 cm}
-\uncover<3->{The gap was filled with a library: ZEBRA provided a graph of structures and dynamic memory management, but these were also features of Ada, C, Pascal, and PL/I.}
+\uncover<3->{This gap was filled with a library: ZEBRA provided a graph of structures and dynamic memory management, but these were also features of Ada, C, Pascal, and PL/I.}
 
 \vspace{0.7 cm}
 \uncover<4->{``The whole concept of ZEBRA is a manifestation of one of FORTRAN 77's needs.''}
@@ -1125,7 +1128,7 @@ Physicists drove programming language development in the 1940's and 1950's but s
 \large
 \vspace{0.5 cm}
 \begin{center}
-Languages of $\underbrace{\mbox{non-fork repos}}_{\mbox{\small own work}}$ for $\underbrace{\mbox{GitHub users who also fork {\tt cms-sw/cmssw}}}_{\mbox{\small physicists, specifically CMS}}$
+Languages of $\underbrace{\mbox{non-fork repos}}_{\mbox{\small their own work}}$ for $\underbrace{\mbox{GitHub users who also fork {\tt cms-sw/cmssw}}}_{\mbox{\small physicists, specifically CMS}}$
 \end{center}
 
 \vspace{-0.25 cm}
@@ -1138,7 +1141,7 @@ Languages of $\underbrace{\mbox{non-fork repos}}_{\mbox{\small own work}}$ for $
 \uncover<2->{The shift from Fortran to C++ was a decision made by collaboration leaders.}
 
 \vspace{0.25 cm}
-\uncover<3->{What we see here are individuals choosing what they think will be easiest or best.}
+\uncover<3->{What we see here are individuals choosing for themselves, for their own work.}
 \end{frame}
 
 \begin{frame}{}
