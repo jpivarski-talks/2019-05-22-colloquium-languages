@@ -923,9 +923,9 @@ In the early 2000's, Google was struggling to keep up with the growing web (inde
 \mbox{ } \hfill \uncover<4->{MapReduce is distributed $\underbrace{\mbox{\mintinline{sql}{SELECT}-\mintinline{sql}{WHERE}}}_{\mbox{``map''}}\mbox{-}\underbrace{\mbox{\mintinline{sql}{GROUP BY}}}_{\mbox{``reduce''}}$.} \hfill \mbox{ }
 
 \vspace{0.7 cm}
-\uncover<5->{\textcolor{gray}{2004: published by Dean and Ghemawat}}
+\uncover<5->{\textcolor{gray}{2004: published by Jeffrey Dean and Sanjay Ghemawat.}}
 
-\uncover<5->{\textcolor{gray}{2006: implemented in open-source as Hadoop.}}
+\uncover<5->{\textcolor{gray}{2006: reimplemented as open-source software, named Hadoop.}}
 \end{frame}
 
 \begin{frame}[fragile]{Problems like ``index all the webpages'' plug into the framework.}
@@ -958,11 +958,96 @@ def reduce(word, webpages):
 \mbox{ } \hfill \includegraphics[width=0.55\linewidth]{mapreduce-diagram-by-ibm.png} \hfill \mbox{ }
 \end{frame}
 
-\begin{frame}{}
+\begin{frame}{Physicists got into computers when they became general-purpose}
 \vspace{0.5 cm}
 
-\includegraphics[height=5 cm]{neumann_oppie.jpg} \includegraphics[height=5 cm]{metropolis.jpg}
+\begin{columns}
+\column{0.3\linewidth}
+\includegraphics[width=\linewidth]{presper-and-mauchly.jpg}
+
+\column{0.7\linewidth}
+1944: John Mauchly (physicist) and J.\ Presper Eckert (electrical engineer) design ENIAC for artillery tables.
+
+\vspace{0.25 cm}
+ENIAC was one of the first computers driven by machine code instructions, stored as a program in memory.
+\end{columns}
+
+\vspace{0.25 cm}
+\begin{uncoverenv}<2->
+\begin{columns}
+\column{0.65\linewidth}
+1945: John von Neumann learned of their work and repurposed it for Monte Carlo simulations (H-bomb).
+
+\vspace{0.25 cm}
+His internal memo describing ENIAC's stored programs was leaked; now known as ``Von Neumann architecture.''
+
+\vspace{0.25 cm}
+Los Alamos group led by Nicholas Metropolis, developed Monte Carlo techniques for physics problems.
+\column{0.35\linewidth}
+\includegraphics[width=\linewidth]{neumann_oppie.jpg}
+\end{columns}
+\end{uncoverenv}
 \end{frame}
+
+\begin{frame}{ENIAC was programmed exclusively by six women}
+
+\begin{columns}[t]
+\column{0.15\linewidth}
+\begin{center}
+\includegraphics[width=\linewidth]{Kay-McNulty.jpg}
+
+Kathleen McNulty
+\end{center}
+
+\column{0.15\linewidth}
+\begin{center}
+\includegraphics[width=\linewidth]{Fran-Bilas.jpg}
+
+Frances Bilas
+\end{center}
+
+\column{0.15\linewidth}
+\begin{center}
+\includegraphics[width=\linewidth]{Betty-Jennings.jpg}
+
+Betty Jean Jennings
+\end{center}
+
+\column{0.15\linewidth}
+\begin{center}
+\includegraphics[width=\linewidth]{Ruth-Lichterman.jpg}
+
+Ruth Lichterman
+\end{center}
+
+\column{0.15\linewidth}
+\begin{center}
+\includegraphics[width=\linewidth]{Betty-Snyder.jpg}
+
+Elizabeth Snyder
+\end{center}
+
+\column{0.15\linewidth}
+\begin{center}
+\includegraphics[width=\linewidth]{Marlyn-Meltzer.jpg}
+
+Marlyn Wescoff
+\end{center}
+\end{columns}
+\end{frame}
+
+
+
+
+
+
+
+%% \begin{frame}{Physicists got into computers when they became general-purpose}
+%% \vspace{0.5 cm}
+
+%% \includegraphics[height=5 cm]{neumann_oppie.jpg} \includegraphics[height=5 cm]{metropolis.jpg}
+
+%% \end{frame}
 
 \begin{frame}{}
 \end{frame}
