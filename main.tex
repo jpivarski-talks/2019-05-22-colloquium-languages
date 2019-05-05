@@ -846,7 +846,7 @@ I think the answer is cultural, so I'll take a historical perspective\ldots
 \end{center}
 \end{frame}
 
-\begin{frame}{U.S.\ Census's problem}
+\begin{frame}{The U.S.\ Census's problem}
 \large
 \vspace{0.35 cm}
 The U.S.\ does a census every 10 years. The 1880 census took 8 years to process.
@@ -882,11 +882,13 @@ Held a competition for a new method; winner was 10$\times$ faster than the rest:
 \end{center}
 \end{frame}
 
-\begin{frame}{It was an SQL machine}
+\begin{frame}{It was an SQL machine: 3 basic clauses of most SQL queries}
 \vspace{0.25 cm}
 \begin{center}
-\includegraphics[width=0.85\linewidth]{hh-tabulator.pdf}
+\includegraphics[width=0.75\linewidth]{hh-tabulator.pdf}
 \end{center}
+
+\mbox{ } \hfill \mintinline{sql}{SELECT name WHERE literate GROUP BY marital_status} \hfill \mbox{ }
 \end{frame}
 
 \begin{frame}{}
@@ -897,11 +899,11 @@ Held a competition for a new method; winner was 10$\times$ faster than the rest:
 Herman Hollerith (inventor) incorporated the Tabulating Machine Company, which after a series of mergers became International Business Machines (IBM) in 1924.
 
 \vspace{1 cm}
-The computation represented by this machine is not universal (Turing complete), but has many applications.
+\uncover<2->{The computation represented by this machine is not universal (Turing complete), but has many applications.}
 
 \vspace{0.75 cm}
 \begin{center}
-\textcolor{darkblue}{Most recently renamed ``map-reduce.''}
+\uncover<3->{\textcolor{darkblue}{\LARGE Recently renamed ``map-reduce.''}}
 \end{center}
 \end{columns}
 \end{frame}
@@ -918,7 +920,7 @@ In the early 2000's, Google was struggling to keep up with the growing web (inde
 \uncover<3->{2003: task distribution automated by the in-house MapReduce framework.}
 
 \vspace{0.7 cm}
-\mbox{ } \hfill \uncover<4->{MapReduce is distributed $\underbrace{\mbox{\textcolor{darkorange}{\bf SELECT}-\textcolor{darkorange}{\bf WHERE}}}_{\mbox{``map''}}\mbox{-}\underbrace{\mbox{\textcolor{darkorange}{\bf GROUP BY}}}_{\mbox{``reduce''}}$.} \hfill \mbox{ }
+\mbox{ } \hfill \uncover<4->{MapReduce is distributed $\underbrace{\mbox{\mintinline{sql}{SELECT}-\mintinline{sql}{WHERE}}}_{\mbox{``map''}}\mbox{-}\underbrace{\mbox{\mintinline{sql}{GROUP BY}}}_{\mbox{``reduce''}}$.} \hfill \mbox{ }
 
 \vspace{0.7 cm}
 \uncover<5->{\textcolor{gray}{2004: published by Dean and Ghemawat}}
@@ -926,35 +928,45 @@ In the early 2000's, Google was struggling to keep up with the growing web (inde
 \uncover<5->{\textcolor{gray}{2006: implemented in open-source as Hadoop.}}
 \end{frame}
 
-\begin{frame}[fragile]{MapReduce}
+\begin{frame}[fragile]{Problems like ``index all the webpages'' plug into the framework.}
 \vspace{0.5 cm}
 \begin{columns}
-\column{0.5\linewidth}
-\textcolor{darkorange}{\bf SELECT}-\textcolor{darkorange}{\bf WHERE} (map): filter and transform each input to a $\langle$key, value$\rangle$ pair.
+\column{0.45\linewidth}
+\mintinline{sql}{SELECT}-\mintinline{sql}{WHERE}: filter and transform each input to a $\langle$key, value$\rangle$ pair.
 
 \small
 \begin{minted}[stripnl=false]{python}
-def mapper(webpage):
+def map(webpage):
     for word in webpage.split():
         yield (word, webpage)
 
 \end{minted}
 
-\column{0.55\linewidth}
-\textcolor{darkorange}{\bf GROUP BY} (reduce): collect and transform all values with a given key.
+\column{0.45\linewidth}
+\mintinline{sql}{GROUP BY}: collect and transform all values with a given key.
 
 \small
 \begin{minted}{python}
-def reducer(word, webpages):
-    searchIndex[word] = set()
+def reduce(word, webpages):
+    index[word] = set()
     for webpage in webpages:
-        searchIndex[word].add(webpage)
+        index[word].add(webpage)
 \end{minted}
 \end{columns}
 
 \vspace{0.25 cm}
 \mbox{ } \hfill \includegraphics[width=0.55\linewidth]{mapreduce-diagram-by-ibm.png} \hfill \mbox{ }
 \end{frame}
+
+\begin{frame}{}
+\vspace{0.5 cm}
+
+\includegraphics[height=5 cm]{neumann_oppie.jpg} \includegraphics[height=5 cm]{metropolis.jpg}
+\end{frame}
+
+\begin{frame}{}
+\end{frame}
+
 
 
 
