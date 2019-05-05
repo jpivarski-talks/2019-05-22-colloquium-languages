@@ -78,14 +78,15 @@ Because, you know, it's different water.
 \end{center}
 \end{frame}
 
-\begin{frame}{}
-\Large
-\vspace{1.5 cm}
+\begin{frame}{Why do we say it's the same river anyway?}
+\LARGE
+\vspace{0.5 cm}
 \begin{columns}
 \column{1.02\linewidth}
-\textcolor{darkblue}{\huge Why do we say it's the same river anyway?}
+\uncover<2->{The river is an \textcolor{darkblue}{abstraction}.}
 
-\vspace{0.5 cm}
+\Large
+\vspace{0.25 cm}
 \uncover<2->{We associate an enormous number of microscopic states (``molecules here, molecules there'') with a single macroscopic state (``the river'').}
 \end{columns}
 
@@ -96,7 +97,8 @@ Because, you know, it's different water.
 \includegraphics[width=\linewidth]{idealgas.jpg}
 
 \column{0.6\linewidth}
-This abstraction is thermodynamics, and it can be exact with the right definitions.
+\Large
+It's an abstraction like thermodynamics; it can be exact with the right definitions.
 \end{columns}
 \end{uncoverenv}
 \end{frame}
@@ -175,7 +177,7 @@ reduces the mental burden on programmers and users.
 \vspace{0.13 cm}
 \begin{itemize}
 \item Super Mario Bros.\ \textcolor{darkblue}{entirely rewritten in Javascript} by Josh Goldberg.
-\item Shares {\it none} of the original code, written in a {\it completely} different style.
+\item Shares none of the original code, but behaves identically.
 \end{itemize}
 
 \begin{center}
@@ -199,7 +201,7 @@ As a young programmer, I wasn't satisfied with high-level languages because I wa
 \uncover<2->{Which meant Pascal. \\ Pascal was ``real,'' and BASIC was not.}
 
 \vspace{0.75 cm}
-\uncover<3->{But ultimately, not even machine code is real in the sense that I meant.}
+\uncover<3->{But ultimately, not even assembly code is real in the sense that I meant.}
 \end{center}
 \column{0.35\linewidth}
 \includegraphics[width=\linewidth]{jimbasic1.jpg}
@@ -232,7 +234,7 @@ The objectively real part of a computer is the set of physical states \underline
 \Large
 \vspace{1.25 cm}
 \begin{center}
-Some programming languages are high-level and others low-level, \\
+Programming languages differ in their degree of abstraction, \\
 but {\it all} programming languages are for humans, not computers.
 
 \vspace{0.75 cm}
@@ -246,7 +248,7 @@ CMSSW configuration & \textcolor{darkblue}{implemented in} & Python runtime \\
 Python runtime & \textcolor{darkblue}{implemented in} & C source code \\
 C source code & \textcolor{darkblue}{compiled into} & machine instructions \\
 machine instructions & \textcolor{darkblue}{built into} & logic gates \\
-logic gates & \textcolor{darkblue}{interpreted as} & computation
+logic gates & \textcolor{darkblue}{interpreted as} & computation.
 \end{tabular}
 \end{uncoverenv}
 
@@ -286,13 +288,13 @@ logic gates & \textcolor{darkblue}{interpreted as} & computation
 \Large
 \vspace{1.25 cm}
 \begin{center}
-{\LARGE That's why it was called ``coding.''}
+Programmers had to manually translate \\ these notations into instruction codes.
 
-\vspace{0.25 cm}
-Programmers had to manually look up instruction codes.
+\vspace{1 cm}
+{\huge That's why it was called ``coding.''}
 
-\vspace{1.5 cm}
-\uncover<2->{\textcolor{darkblue}{Von Neumann on Assembly Language:} ``It's a waste of a valuable scientific computing instrument to use it for clerical work!''}
+\vspace{1 cm}
+\uncover<2->{Von Neumann called assembly language ``\textcolor{darkblue}{a waste of a valuable scientific computing instrument---using it for clerical work!}''}
 \end{center}
 \end{frame}
 
@@ -397,7 +399,7 @@ def run(height, width, maxiterations=20):
 \large
 \vspace{0.25 cm}
 \begin{center}
-\uncover<2->{Runs \textcolor{darkorange}{\bf 50$\times$ faster} than pure Python, \textcolor{darkorange}{\bf about equal} to C code ({\tt -O3}).}
+\uncover<2->{Now \textcolor{darkorange}{\bf 50$\times$ faster}, about equal to C code ({\tt -O3}).}
 \end{center}
 \end{frame}
 
@@ -566,7 +568,7 @@ std::cout << "Error 0x" << std::hex << std::setfill('0')
           << std::setw(4) << id << ": " << errors[id] << std::endl;
 \end{minted}
 
-\normalsize
+\large
 \vspace{0.05 cm}
 \begin{center}
 \uncover<2->{\textcolor{darkblue}{printf/scanf} is ``external'' and \textcolor{darkblue}{I/O streams} is ``internal'' (embedded)}
@@ -576,7 +578,7 @@ std::cout << "Error 0x" << std::hex << std::setfill('0')
 \begin{frame}[fragile]{External versus internal (embedded) domain-specific languages}
 \vspace{0.3 cm}
 
-{\large \textcolor{darkblue}{External:} SQL has a distinct syntax from Python; must be quoted in PySpark.}
+{\large \textcolor{darkblue}{\underline{External}:} SQL has a distinct syntax from Python; must be quoted in PySpark.}
 
 \small
 \vspace{-0.25 cm}
@@ -593,7 +595,7 @@ pyspark.sql("""
 \end{columns}
 
 \vspace{0.5 cm}
-{\large \textcolor{darkblue}{Internal (embedded):} SparkSQL is an equivalent language, defined within Python.}
+{\large \textcolor{darkblue}{\underline{Internal} (embedded):} SparkSQL is an equivalent language, defined within Python.}
 
 \small
 \vspace{-0.25 cm}
@@ -632,7 +634,7 @@ What matters is whether it's a coherent set of concepts, not whether it was impl
 \uncover<3->{(One might as well argue about the distinction between languages and dialects.)}
 \end{frame}
 
-\begin{frame}[fragile]{Scala: a language for internal domain-specific languages}
+\begin{frame}[fragile]{Behold the flexibility of Scala!}
 \large
 \vspace{0.5 cm}
 In Scala, a class's methods can be accessed through a dot or a space.
@@ -651,12 +653,12 @@ a × b          // cross can also be named ×
 \end{minted}
 \end{frame}
 
-\begin{frame}[fragile]{Example: tests in the ScalaTest framework}
+\begin{frame}[fragile]{What you can do with that: ScalaTest}
 \vspace{0.25 cm}
 
 \small
 \begin{minted}{scala}
-def tests(x: Double, str: String) {
+def unitTests(x: Double, str: String) {
     f(x) should not equal 7
 
     List("one", "two", "three") should contain ("two")
@@ -736,7 +738,7 @@ Perhaps the most widespread domain-specific language in data analysis:
 \end{columns}
 \end{frame}
 
-\begin{frame}[fragile]{Typical collider physics problem \only<1>{in C++}\only<2>{in SQL}}
+\begin{frame}[fragile]{Structure of a collider physics query: \only<1>{C++}\only<2>{SQL}}
 \large
 \vspace{0.5 cm}
 \textcolor{darkblue}{``Momentum of the track with $|\eta|$ $<$ 2.4 that has the most hits.''}
@@ -792,7 +794,7 @@ The problem is that collisions produce a variable number of particles per event:
 
 \vspace{0.75 cm}
 \begin{uncoverenv}<2->
-This {\it can be} described in SQL's relational framework:
+This {\it can be} described using SQL's relational concepts:
 
 \begin{itemize}
 \item separate tables for events and particles
