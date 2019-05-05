@@ -914,7 +914,7 @@ Herman Hollerith (inventor) incorporated the Tabulating Machine Company, which a
 In the early 2000's, Google was struggling to keep up with the growing web (index 5 months out of date, routine hardware failures, scale sensitive to bit flips).
 
 \vspace{0.7 cm}
-\uncover<2->{Each programmer had to divide tasks and combine results manually, accounting for failures manually.}
+\uncover<2->{Each programmer had to divide tasks and combine results manually and account for failures manually.}
 
 \vspace{0.7 cm}
 \uncover<3->{2003: MapReduce created to abstract task management from analysis logic.}
@@ -974,7 +974,7 @@ Physics and computing crossed paths in a different way.
 \includegraphics[width=\linewidth]{presper-and-mauchly.jpg}
 
 \column{0.7\linewidth}
-1944: John Mauchly (physicist) and J.\ Presper Eckert (electrical engineer) design ENIAC to replace mechanical computers.
+1944: John Mauchly (physicist) and J.\ Presper Eckert (electrical engineer) designed ENIAC to replace mechanical computers.
 
 \vspace{0.25 cm}
 \uncover<2->{ENIAC was one of the first computers driven by machine code instructions, stored as a program in memory.}
@@ -1070,10 +1070,10 @@ code: X3 03 09 X1 07 Y1 02 04 X1   Y1
 \end{uncoverenv}
 
 \vspace{0.5 cm}
-\uncover<3->{1952--1959: Employee Grace Hopper develops a series of {\it compiled} languages, ultimately COBOL.}
+\uncover<3->{1952--1959: At Remington Rand, Grace Hopper developed a series of {\it compiled} languages, ultimately COBOL.}
 
 \vspace{0.5 cm}
-\uncover<4->{Meanwhile, IBM develops FORTRAN: 1954--1957.}
+\uncover<4->{Meanwhile, IBM developed FORTRAN: 1954--1957.}
 
 \column{0.3\linewidth}
 \includegraphics[width=\linewidth]{Univac_I_at_Census_Bureau_with_two_operators.jpg}
@@ -1083,21 +1083,53 @@ code: X3 03 09 X1 07 Y1 02 04 X1   Y1
 \end{frame}
 
 \begin{frame}{}
-\LARGE
-\vspace{1.25 cm}
-So physicists needed general-purpose (stored program) computers to solve a complex problem---Monte Carlo.
+\large
+\vspace{1.5 cm}
+\begin{columns}
+\column{1.05\linewidth}
+Physicists drove programming language development in the 1940's and 1950's but stuck with FORTRAN until the 21$^{\mbox{\scriptsize st}}$ century.
 
-\vspace{1 cm}
-Data analysis requires less generality, but if you have a general-purpose hammer\ldots
+\vspace{0.7 cm}
+\uncover<2->{In fact, FORTRAN (pre-Fortran 90) wasn't even a good fit to {\it data analysis} problems. It lacks jagged tables just as SQL does.}
+
+\vspace{0.7 cm}
+\uncover<3->{The gap was filled with a library: ZEBRA provided a graph of structures and dynamic memory management, but these were also features of Ada, C, Pascal, and PL/I.}
+
+\vspace{0.7 cm}
+\uncover<4->{``The whole concept of ZEBRA is a manifestation of one of FORTRAN 77's needs.''}
+
+\vspace{0.2 cm}
+\uncover<4->{\hfill --- Bebo White in 1989}
+\end{columns}
 \end{frame}
 
-\begin{frame}{Show of hands}
-\LARGE
-\vspace{0.5 cm}
-\begin{center}
-How many here today have used MINUIT \\ (general-purpose fitting) to fit a straight line?
-\end{center}
+\begin{frame}{We still have our own solutions for nested (jagged) data}
+\vspace{0.25 cm}
+\includegraphics[width=\linewidth]{history.pdf}
 \end{frame}
+
+\begin{frame}{Ironically, a very similar talk was given almost 20 years ago today}
+\vspace{0.25 cm}
+\includegraphics[width=\linewidth]{bebo-white-title-page.png}
+\end{frame}
+
+
+%% \begin{frame}{}
+%% \LARGE
+%% \vspace{1.25 cm}
+%% So physicists needed general-purpose (stored program) computers to solve a complex problem---Monte Carlo.
+
+%% \vspace{1 cm}
+%% Data analysis requires less generality, but if you have a general-purpose hammer\ldots
+%% \end{frame}
+
+%% \begin{frame}{Show of hands}
+%% \LARGE
+%% \vspace{0.5 cm}
+%% \begin{center}
+%% How many here today have used MINUIT \\ (general-purpose fitting) to fit a straight line?
+%% \end{center}
+%% \end{frame}
 
 
 
