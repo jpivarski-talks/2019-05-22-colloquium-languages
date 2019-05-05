@@ -926,45 +926,37 @@ In the early 2000's, Google was struggling to keep up with the growing web (inde
 \uncover<5->{\textcolor{gray}{2006: implemented in open-source as Hadoop.}}
 \end{frame}
 
+\begin{frame}[fragile]{MapReduce}
+\vspace{0.5 cm}
+\begin{columns}
+\column{0.5\linewidth}
+\textcolor{darkorange}{\bf SELECT}-\textcolor{darkorange}{\bf WHERE} (map): filter and transform each input to a $\langle$key, value$\rangle$ pair.
 
-%% \begin{frame}[fragile]
-%% \frametitle{Map-reduce}
+\small
+\begin{minted}[stripnl=false]{python}
+def mapper(webpage):
+    for word in webpage.split():
+        yield (word, webpage)
 
-%% Hadoop executes two sets of independent, identical processors:
-%% \begin{itemize}
-%% \item Mappers, which transform each input to a $\langle$key, value$\rangle$ pair.
-%% \item Reducers, each operates on all values that have a given key.
-%% \end{itemize}
+\end{minted}
 
-%% \vspace{-0.1 cm}
-%% \begin{columns}
-%% \column{0.5\linewidth}
-%% \begin{lstlisting}[frame=single]
-%% def mapper($webpage$):
-%%   for $word$ in $webpage$.split():
-%%     yield ($word$, $webpage$)
-%% $$
-%% \end{lstlisting}
-%% \column{0.58\linewidth}
-%% \begin{lstlisting}[frame=single]
-%% def reducer($word$, $webpages$):
-%%   searchIndex[$word$] = {}
-%%   for $webpage$ in $webpages$:
-%%     searchIndex[$word$].add($webpage$)
-%% \end{lstlisting}
-%% \end{columns}
+\column{0.55\linewidth}
+\textcolor{darkorange}{\bf GROUP BY} (reduce): collect and transform all values with a given key.
 
-%% The system groups data by key in an optimized way (independent partial sorts followed by merge, minimizing network bandwidth).
+\small
+\begin{minted}{python}
+def reducer(word, webpages):
+    searchIndex[word] = set()
+    for webpage in webpages:
+        searchIndex[word].add(webpage)
+\end{minted}
+\end{columns}
 
-%% \vspace{0.2 cm}
-%% \mbox{ } \hfill \includegraphics[width=0.6\linewidth]{PLOTS/mapreduce-diagram-by-ibm.png} \hfill \mbox{ }
-%% \end{frame}
+\vspace{0.25 cm}
+\mbox{ } \hfill \includegraphics[width=0.55\linewidth]{mapreduce-diagram-by-ibm.png} \hfill \mbox{ }
+\end{frame}
 
 
-%% \begin{frame}[fragile]{}
-%% 50$\times$
 
-
-%% \end{frame}
 
 \end{document}
