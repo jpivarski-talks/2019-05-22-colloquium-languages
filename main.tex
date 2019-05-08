@@ -64,6 +64,28 @@
 % START START START START START START START START START START START START START
 
 \begin{frame}{}
+\vspace{-0.25 cm}
+\begin{columns}[t]
+\column{1.15\linewidth}
+\includegraphics[width=\linewidth]{ADLposter_v3.png}
+\end{columns}
+\end{frame}
+
+\begin{frame}{}
+\Large
+\vspace{1.25 cm}
+\begin{center}
+{\LARGE But that just ended a few minutes ago.}
+
+\vspace{1 cm}
+(This talk is not a summary of the workshop; \\ come to tomorrow's LPC Physics Forum at 1:30pm.)
+
+\vspace{1 cm}
+\uncover<2->{\LARGE Instead, let's take a step back\ldots}
+\end{center}
+\end{frame}
+
+\begin{frame}{}
 \vspace{-0.1 cm}
 \begin{columns}
 \column{1.15\linewidth}
@@ -75,7 +97,7 @@
 \huge
 \vspace{0.5 cm}
 \begin{center}
-Because, you know, it's different water.
+\only<1>{Because, you know, it's different water.}\only<2>{So why do we say it's the same river?}
 \end{center}
 \end{frame}
 
@@ -84,15 +106,15 @@ Because, you know, it's different water.
 \vspace{0.5 cm}
 \begin{columns}
 \column{1.02\linewidth}
-\uncover<2->{The river is an \textcolor{darkblue}{abstraction}.}
+\uncover<1->{The river is an \textcolor{darkblue}{abstraction}.}
 
 \Large
 \vspace{0.25 cm}
-\uncover<2->{We associate an enormous number of microscopic states (``molecules here, molecules there'') with a single macroscopic state (``the river'').}
+\uncover<1->{We associate an enormous number of microscopic states (``molecules here, molecules there'') with a single macroscopic state (``the river'').}
 \end{columns}
 
 \vspace{0.5 cm}
-\begin{uncoverenv}<3->
+\begin{uncoverenv}<2->
 \begin{columns}
 \column{0.3\linewidth}
 \includegraphics[width=\linewidth]{idealgas.jpg}
@@ -165,7 +187,7 @@ reduces the mental burden on programmers and users.
 \includegraphics[width=\linewidth]{atom-proton-quark.png}
 
 \vspace{1 cm}
-\textcolor{gray}{though these are approximate, taking advantage of a separation of scales.}
+\textcolor{gray}{These are approximate, taking advantage of a separation of scales.}
 \end{frame}
 
 \begin{frame}{(cartoon diagram, not to scale)}
@@ -202,7 +224,7 @@ As a young programmer, I wasn't satisfied with high-level languages because I wa
 \uncover<2->{Which meant Pascal. \\ Pascal was ``real,'' and BASIC was not.}
 
 \vspace{0.75 cm}
-\uncover<3->{But ultimately, not even assembly code is real in the sense that I meant.}
+\uncover<3->{But ultimately, not even assembly code is real in the sense that I'm meaning here.}
 \end{center}
 \column{0.35\linewidth}
 \includegraphics[width=\linewidth]{jimbasic1.jpg}
@@ -213,7 +235,7 @@ As a young programmer, I wasn't satisfied with high-level languages because I wa
 \LARGE
 \vspace{1 cm}
 \begin{center}
-The objectively real part of a computer is the set of physical states \underline{\it that we interpret} as computations.
+The objectively real part of a computer is a set \\ of physical states\uncover<1>{.}\uncover<2>{\underline{\it that we interpret} as computations.}
 
 \vspace{0.2 cm}
 \includegraphics[width=0.4\linewidth]{abacus.jpg}
@@ -302,7 +324,7 @@ Programmers had to manually translate \\ these notations into instruction codes.
 \begin{frame}{The Software Crisis}
 \large
 \vspace{1 cm}
-Now that our programming languages {\it do} push abacus beads, software engineering has become an odd discipline: \textcolor{darkblue}{describing something is the same as creating it.}
+Now that our programming languages {\it do} push abacus beads, software engineering has become an odd discipline: \textcolor{darkblue}{saying something is the same as making it.}
 
 \vspace{1 cm}
 \begin{uncoverenv}<2->
@@ -331,7 +353,7 @@ We favor \textcolor{darkblue}{high-level} languages because they have fewer conc
 ``There's no such thing as a `fast' or `slow' language.''
 
 \vspace{0.2 cm}
-\hfill\mbox{--- StackOverflow\hspace{1 cm}}
+\hfill\textcolor{gray}{--- so sayeth the StackOverflow\hspace{1 cm}}
 \end{uncoverenv}
 \end{center}
 \end{columns}
@@ -632,95 +654,95 @@ What matters is whether it's a coherent set of concepts, not whether it was impl
 \end{uncoverenv}
 
 \vspace{1 cm}
-\uncover<3->{(One might as well argue about the distinction between languages and dialects.)}
+\uncover<3->{\textcolor{gray}{(One might as well argue about the distinction between languages and dialects.)}}
 \end{frame}
 
-\begin{frame}[fragile]{Behold the language-making capabilities of Scala!}
-\large
-\vspace{0.5 cm}
-In Scala, a class's methods can be accessed {\it either} with a dot {\it or} a space.
+%% \begin{frame}[fragile]{Behold the language-making capabilities of Scala!}
+%% \large
+%% \vspace{0.5 cm}
+%% In Scala, a class's methods can be accessed {\it either} with a dot {\it or} a space.
 
-\vspace{0.25 cm}
-Parentheses are optional on single argument methods, and methods can have unicode names.
+%% \vspace{0.25 cm}
+%% Parentheses are optional on single argument methods, and methods can have unicode names.
 
-\vspace{0.25 cm}
-The following are equivalent:
+%% \vspace{0.25 cm}
+%% The following are equivalent:
 
-\small
-\begin{minted}{scala}
-a.cross(b)     // a and b are ThreeVectors, which has a cross method
-a cross b      // the dot and parentheses may be omitted
-a × b          // cross can also be named ×
-\end{minted}
-\end{frame}
+%% \small
+%% \begin{minted}{scala}
+%% a.cross(b)     // a and b are ThreeVectors, which has a cross method
+%% a cross b      // the dot and parentheses may be omitted
+%% a × b          // cross can also be named ×
+%% \end{minted}
+%% \end{frame}
 
-\begin{frame}[fragile]{You can do crazy stuff with that: ScalaTest}
-\vspace{0.25 cm}
+%% \begin{frame}[fragile]{You can do crazy stuff with that: ScalaTest}
+%% \vspace{0.25 cm}
 
-\small
-\begin{minted}{scala}
-def unitTests(x: Double, str: String) {
-    f(x) should not equal 7
+%% \small
+%% \begin{minted}{scala}
+%% def unitTests(x: Double, str: String) {
+%%     f(x) should not equal 7
 
-    List("one", "two", "three") should contain ("two")
+%%     List("one", "two", "three") should contain ("two")
 
-    an [IndexOutOfBoundsException] should be thrownBy str.charAt(-1)
-}
-\end{minted}
+%%     an [IndexOutOfBoundsException] should be thrownBy str.charAt(-1)
+%% }
+%% \end{minted}
 
-\vspace{0.25 cm}
-\begin{uncoverenv}<2->
-\begin{columns}
-\column{1.05\linewidth}
-\large
-\textcolor{darkblue}{Works because of syntax magic:}
+%% \vspace{0.25 cm}
+%% \begin{uncoverenv}<2->
+%% \begin{columns}
+%% \column{1.05\linewidth}
+%% \large
+%% \textcolor{darkblue}{Works because of syntax magic:}
 
-\normalsize
-\begin{itemize}
-\item Certain types are promoted to implicit classes with \mintinline{scala}{should} methods.
-\item The class returned by \mintinline{scala}{should} has \mintinline{scala}{not}, \mintinline{scala}{contain}, and \mintinline{scala}{be} methods.
-\item Some are parameterized (like C++ templates) by \mintinline{scala}{IndexOutOfBoundsException}.
-\item Evaluation of arguments may be delayed to internally wrap with try-catch logic.
-\end{itemize}
+%% \normalsize
+%% \begin{itemize}
+%% \item Certain types are promoted to implicit classes with \mintinline{scala}{should} methods.
+%% \item The class returned by \mintinline{scala}{should} has \mintinline{scala}{not}, \mintinline{scala}{contain}, and \mintinline{scala}{be} methods.
+%% \item Some are parameterized (like C++ templates) by \mintinline{scala}{IndexOutOfBoundsException}.
+%% \item Evaluation of arguments may be delayed to internally wrap with try-catch logic.
+%% \end{itemize}
 
-\large
-\vspace{0.25 cm}
-\uncover<3->{\textcolor{darkorange}{\bf We're not thinking about syntax magic when we read the test code.}}
-\end{columns}
-\end{uncoverenv}
-\end{frame}
+%% \large
+%% \vspace{0.25 cm}
+%% \uncover<3->{\textcolor{darkorange}{\bf We're not thinking about syntax magic when we read the test code.}}
+%% \end{columns}
+%% \end{uncoverenv}
+%% \end{frame}
 
-\begin{frame}[fragile]{Another example: Chisel, a hardware description language in Scala}
-\scriptsize
-\vspace{0.5 cm}
+%% \begin{frame}[fragile]{Another example: Chisel, a hardware description language in Scala}
+%% \scriptsize
+%% \vspace{0.5 cm}
 
-\begin{columns}
-\column{1.05\linewidth}
-\begin{minted}{scala}
-class VendingMachine extends Component {
-  val io = new Bundle {
-    val nickel = Bool(INPUT)
-    val dime   = Bool(INPUT)
-    val ready  = Bool(OUTPUT)
-  }
-  val s_idle :: s_5 :: s_10 :: s_15 :: s_ok :: Nil = Enum(5){ UFIx() }
-  val state = Reg(resetVal = s_idle)
-  switch (state) {
-    is (s_idle) { when (io.nickel) { state := s_5 }  when (io.dime) { state := s_10 } }
-    is (s_5)    { when (io.nickel) { state := s_10 } when (io.dime) { state := s_15 } }
-    is (s_10)   { when (io.nickel) { state := s_15 } when (io.dime) { state := s_ok } }
-    is (s_15)   { when (io.nickel) { state := s_ok } when (io.dime) { state := s_ok } }
-    is (s_ok)   { state := s_idle }
-  }
-  io.ready := (state === s_ok)
-}
-\end{minted}
+%% \begin{columns}
+%% \column{1.05\linewidth}
+%% \begin{minted}{scala}
+%% class VendingMachine extends Component {
+%%   val io = new Bundle {
+%%     val nickel = Bool(INPUT)
+%%     val dime   = Bool(INPUT)
+%%     val ready  = Bool(OUTPUT)
+%%   }
+%%   val s_idle :: s_5 :: s_10 :: s_15 :: s_ok :: Nil = Enum(5){ UFIx() }
+%%   val state = Reg(resetVal = s_idle)
+%%   switch (state) {
+%%     is (s_idle) { when (io.nickel) { state := s_5 }  when (io.dime) { state := s_10 } }
+%%     is (s_5)    { when (io.nickel) { state := s_10 } when (io.dime) { state := s_15 } }
+%%     is (s_10)   { when (io.nickel) { state := s_15 } when (io.dime) { state := s_ok } }
+%%     is (s_15)   { when (io.nickel) { state := s_ok } when (io.dime) { state := s_ok } }
+%%     is (s_ok)   { state := s_idle }
+%%   }
+%%   io.ready := (state === s_ok)
+%% }
+%% \end{minted}
 
-\large
-\vspace{0.25 cm}
-\textcolor{gray}{(It's a register-transfer level hardware description language like Verilog and VHDL, not high-level synthesis, but much more succinct and parameterizable.)}
-\end{columns}
-\end{frame}
+%% \large
+%% \vspace{0.25 cm}
+%% \textcolor{gray}{(It's a register-transfer level hardware description language like Verilog and VHDL, not high-level synthesis, but much more succinct and parameterizable.)}
+%% \end{columns}
+%% \end{frame}
 
 \begin{frame}{}
 \Large
@@ -827,6 +849,13 @@ But each type of particle has to be a separate table and each operation has to b
 \uncover<2->{\textcolor{darkorange}{\bf That was the subject of the Analysis Description Language Workshop.}}
 \end{frame}
 
+\begin{frame}{In fact, about that SQL\ldots}
+\vspace{0.11 cm}
+\begin{center}
+\only<1>{\includegraphics[width=0.73\linewidth]{relational-events-1.jpg}}\only<2>{\includegraphics[width=0.73\linewidth]{relational-events-2.jpg}}
+\end{center}
+\end{frame}
+
 \begin{frame}{}
 \LARGE
 \vspace{1.25 cm}
@@ -843,6 +872,9 @@ Why hasn't this been done before?
 \vspace{1.25 cm}
 \begin{center}
 I think the answer is cultural, so I'll take a historical perspective\ldots
+
+\vspace{1 cm}
+\uncover<2->{Starting in 1880.}
 \end{center}
 \end{frame}
 
@@ -1093,7 +1125,7 @@ code: X3 03 09 X1 07 Y1 02 04 X1   Y1
 Physicists drove programming language development in the 1940's and 1950's but stuck with FORTRAN until the 21$^{\mbox{\scriptsize st}}$ century.
 
 \vspace{0.7 cm}
-\uncover<2->{In fact, FORTRAN (pre-Fortran 90) wasn't even a good fit to {\it data analysis} problems. It lacked jagged tables just as SQL does.}
+\uncover<2->{In fact, FORTRAN (pre-Fortran 90) wasn't even a good fit to {\it data analysis} problems. It didn't handle jagged data well, much like SQL.}
 
 \vspace{0.7 cm}
 \uncover<3->{This gap was filled with a library: ZEBRA provided a graph of structures and dynamic memory management, but these were also features of Ada, C, Pascal, and PL/I.}
@@ -1106,10 +1138,10 @@ Physicists drove programming language development in the 1940's and 1950's but s
 \end{columns}
 \end{frame}
 
-\begin{frame}{We still have our own solutions for nested (jagged) data}
-\vspace{0.25 cm}
-\includegraphics[width=\linewidth]{history.pdf}
-\end{frame}
+%% \begin{frame}{We still have our own solutions for nested (jagged) data}
+%% \vspace{0.25 cm}
+%% \includegraphics[width=\linewidth]{history.pdf}
+%% \end{frame}
 
 \begin{frame}{Ironically, a very similar talk was given almost 20 years ago today}
 \vspace{0.25 cm}
@@ -1141,25 +1173,33 @@ Languages of $\underbrace{\mbox{non-fork repos}}_{\mbox{\small their own work}}$
 \uncover<2->{The shift from Fortran to C++ was a decision made by collaboration leaders.}
 
 \vspace{0.25 cm}
-\uncover<3->{What we see here are individuals choosing for themselves, for their own work.}
+\uncover<3->{What we see here are individuals choosing a language for their own work.}
+\end{frame}
+
+%% \begin{frame}{}
+%% \Large
+%% \vspace{1.5 cm}
+%% \begin{center}
+%% So let's try some---very focused---domain specific language ideas!
+
+%% \vspace{1 cm}
+%% And find out if the physics community thinks they're helpful.
+%% \end{center}
+%% \end{frame}
+
+\begin{frame}{}
+\vspace{-0.25 cm}
+\begin{columns}[t]
+\column{1.15\linewidth}
+\includegraphics[width=\linewidth]{ADLposter_v3.png}
+\end{columns}
 \end{frame}
 
 \begin{frame}{}
-\Large
+\LARGE
 \vspace{1.5 cm}
 \begin{center}
-So let's try some---very focused---domain specific language ideas!
-
-\vspace{1 cm}
-And find out if the physics community thinks they're helpful.
-\end{center}
-\end{frame}
-
-\begin{frame}{}
-\Huge
-\vspace{1.5 cm}
-\begin{center}
-Thank you!
+Informal summary of the workshop at tomorrow's \\ LPC Physics Forum at 1:30pm.
 \end{center}
 \end{frame}
 
